@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Shop - Joyas y Accesorios</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand" onclick="ui.scrollToTop()" style="cursor: pointer;">
+                <i class="fas fa-gem"></i>
+                <h1>Cute Shop</h1>
+            </div>
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-input">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <button class="cart-btn" id="cartBtn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Categories Section -->
+        <section class="categories-section">
+            <h2>Categorías de Joyas</h2>
+            <div class="categories-grid" id="categoriesGrid">
+                <div class="category-card active" data-category="all">
+                    <i class="fas fa-star"></i>
+                    <span>Todas</span>
+                </div>
+                <div class="category-card" data-category="rings">
+                    <i class="fas fa-ring"></i>
+                    <span>Anillos</span>
+                </div>
+                <div class="category-card" data-category="necklaces">
+                    <i class="fas fa-gem"></i>
+                    <span>Collares</span>
+                </div>
+                <div class="category-card" data-category="earrings">
+                    <i class="fas fa-circle"></i>
+                    <span>Aretes</span>
+                </div>
+                <div class="category-card" data-category="bracelets">
+                    <i class="fas fa-circle-notch"></i>
+                    <span>Pulseras</span>
+                </div>
+                <div class="category-card" data-category="watches">
+                    <i class="fas fa-clock"></i>
+                    <span>Relojes</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products-section">
+            <div class="section-header">
+                <h2>Nuestras Joyas</h2>
+                <div class="loading-spinner" id="loadingSpinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Cargando productos...</span>
+                </div>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Los productos se cargarán dinámicamente aquí -->
+            </div>
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Error al cargar los productos. Por favor, intenta de nuevo.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Modal -->
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-shopping-bag"></i> Tu Carrito</h3>
+                <button class="close-btn" id="closeCartBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Los items del carrito se mostrarán aquí -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn">
+                    <i class="fas fa-credit-card"></i>
+                    Finalizar Compra
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content product-detail-modal">
+            <div class="product-detail-container" id="productDetailContent">
+                <!-- El detalle del producto se mostrará aquí -->
+            </div>
+            <button class="close-btn product-close-btn" id="closeProductBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="toast-icon"></i>
+        <span class="toast-message"></span>
+    </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Logo y derechos -->
+            <div class="footer-brand">
+                <div class="brand-logo">
+                    <div class="brand-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <span class="brand-name">Cute Shop</span>
+                </div>
+                <div class="copyright">
+                    <small>© 2025 Todos los derechos reservados</small>
+                </div>
+            </div>
+
+            <!-- Enlaces -->
+            <div class="footer-links">
+                <a href="https://inalaf.ca" target="_blank" class="footer-link" aria-label="Sitio web">
+                    <div class="icon-container">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <span class="link-text">Sitio Web</span>
+                </a>
+                <a href="https://github.com/MagdaIG" target="_blank" class="footer-link" aria-label="GitHub">
+                    <div class="icon-container">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <span class="link-text">GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="footer-link" aria-label="LinkedIn">
+                    <div class="icon-container">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <span class="link-text">LinkedIn</span>
+                </a>
+            </div>
+
+            <!-- Créditos -->
+            <div class="footer-credits">
+                <div class="credits-content">
+                    <span class="credits-text">Desarrollado con <i class="fas fa-heart"></i> por</span>
+                    <span class="developer-name">Magdalena Inalaf G.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
